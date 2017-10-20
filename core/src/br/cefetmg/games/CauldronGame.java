@@ -70,6 +70,7 @@ public class CauldronGame extends ApplicationAdapter {
         // solicita carregamento dos 2 modelos 3D da cena
         assets.load("caldeirao.obj", Model.class);
         assets.load("fogueira.obj", Model.class);
+        
 
         // instancia e configura 2 tipos de renderizadores de partículas:
         // 1. Billboards (para fogo)
@@ -112,9 +113,11 @@ public class CauldronGame extends ApplicationAdapter {
 
         // instancia, configura e dá início ao efeito das bolhas
         // use o campo ParticleEffect bolhas definido na linha #38
-        // ...
-        // ...
-        // ...
+        bolhas = ((ParticleEffect) assets.get("bolhas.pfx")).copy();
+        bolhas.init();
+        bolhas.start();
+        bolhas.translate(new Vector3(0,1.0f,0));
+        sistemaParticulas.add(bolhas);
         
         // começa a música
         musica.setLooping(true);
